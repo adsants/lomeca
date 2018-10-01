@@ -38,6 +38,10 @@ class Login extends CI_Controller {
 								
 				if($dataUser){
 					
+					
+					
+					
+					
 					$sess_array = array(
 						'nama_user' => $dataUser->NAMA_CLIENT, 'id_user' => $dataUser->ID_CLIENT
 					);
