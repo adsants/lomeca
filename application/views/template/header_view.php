@@ -140,7 +140,30 @@ $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
       <ul class="sidebar-menu">
         <li class="header">&nbsp;</li>
 
-        <?php //echo $tampil_menu; ?>
+       <li class='<?php if($this->uri->segment(1)=='dashboard') echo "active"; ?>'>
+			<a href='<?=base_url();?>dashboard'>
+			<i class='fa fa-dashboard'></i>
+			<span>Dashboard</span>
+
+			</a>
+		</li>
+		<li class='<?php if($this->uri->segment(1)=='client') echo "active"; ?>  treeview'>
+			<a href='#'>
+				<i class='fa fa-database'></i>
+				<span>Utilitas</span>
+				<span class='pull-right-container'><i class='fa fa-angle-left 	pull-right'></i></span>
+			</a>
+			<ul class='treeview-menu'>
+				<li class='<?php if($this->uri->segment(1)=='client') echo "active"; ?> '>
+				<a href='<?=base_url();?>client'>
+				<i class='fa fa-angle-right'></i> 
+				<span>Data Client</span>
+
+				</a>
+				</li>
+				
+			</ul>
+		</li>
 
       </ul>
     </section>
