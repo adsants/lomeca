@@ -140,29 +140,39 @@ $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
       <ul class="sidebar-menu">
         <li class="header">&nbsp;</li>
 
-       <li class='<?php if($this->uri->segment(1)=='dashboard') echo "active"; ?>'>
+		<li class='<?php if($this->uri->segment(1)=='dashboard') echo "active"; ?>'>
 			<a href='<?=base_url();?>dashboard'>
 			<i class='fa fa-dashboard'></i>
 			<span>Dashboard</span>
-
 			</a>
 		</li>
-		<li class='<?php if($this->uri->segment(1)=='client') echo "active"; ?>  treeview'>
-			<a href='#'>
-				<i class='fa fa-database'></i>
-				<span>Utilitas</span>
-				<span class='pull-right-container'><i class='fa fa-angle-left 	pull-right'></i></span>
+		<?php
+		if($this->session->userdata('id_client') != '0'){
+		?>
+		<li class='<?php if($this->uri->segment(1)=='client') echo "active"; ?>'>
+			<a href='<?=base_url();?>client'>
+			<i class='fa fa-database'></i>
+			<span>Client</span>
 			</a>
-			<ul class='treeview-menu'>
-				<li class='<?php if($this->uri->segment(1)=='client') echo "active"; ?> '>
-				<a href='<?=base_url();?>client'>
-				<i class='fa fa-angle-right'></i> 
-				<span>Data Client</span>
+		</li>
+		<?php
+		}
+		?>
+		<li class='<?php if($this->uri->segment(1)=='voucher') echo "active"; ?>'>
+			<a href='<?=base_url();?>voucher'>
+			<i class='fa fa-dollar'></i>
+			<span>Voucher</span>
+			</a>
+		</li>
+		
+		<li class='<?php if($this->uri->segment(1)=='promo') echo "active"; ?>'>
+			<a href='<?=base_url();?>promo'>
+			<i class='fa fa-image'></i>
+			<span>Gambar Promo</span>
+			</a>
+		</li>
 
-				</a>
-				</li>
-				
-			</ul>
+		</a>
 		</li>
 
       </ul>

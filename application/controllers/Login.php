@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 			
 			if($this->input->post('USERNAME_LOGIN')=='lomeca' && $this->input->post('PASSWORD_LOGIN')=='datadigi'){
 				$sess_array = array(
-					'nama_user' => 'Admin Lomeca Datadigi', 'id_user' => '0'
+					'nama_user' => 'Admin Lomeca Datadigi', 'id_client' => '0'
 				);
 				$this->session->set_userdata($sess_array);
 				$status = array('status' => true,'redirect_link' => base_url()."dashboard");
@@ -38,12 +38,8 @@ class Login extends CI_Controller {
 								
 				if($dataUser){
 					
-					
-					
-					
-					
 					$sess_array = array(
-						'nama_user' => $dataUser->NAMA_CLIENT, 'id_user' => $dataUser->ID_CLIENT
+						'nama_user' => $dataUser->NAMA_CLIENT, 'id_client' => $dataUser->ID_CLIENT
 					);
 					
 					$this->session->set_userdata($sess_array);

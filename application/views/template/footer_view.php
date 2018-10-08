@@ -168,6 +168,23 @@
 				autoclose: true,
 
 			});
+			
+			$('#datepicker3').datepicker({
+				autoclose: true,
+				
+			});
+			
+			$('#datepicker4').datepicker({
+				autoclose: true,
+				
+			});
+			
+			$('#datepickerHilangMulai').datepicker({
+				autoclose: true				
+			});
+			$('#datepickerHilangAkhir').datepicker({
+				autoclose: true				
+			});
 
 			$('#modal_posisi').modal('show');
 

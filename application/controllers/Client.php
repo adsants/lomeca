@@ -34,9 +34,9 @@ class Client extends CI_Controller {
 		$this->template_view->load_view('client/client_add_view');
 	}
 	public function add_data(){
-		$this->form_validation->set_rules('NAMA_USER', '', 'trim|required');
+		$this->form_validation->set_rules('NAMA_CLIENT', '', 'trim|required');
 		$this->form_validation->set_rules('PASSWORD', '', 'trim|required');
-		$this->form_validation->set_rules('USERNAME', '', 'trim|required');
+		$this->form_validation->set_rules('EMAIL_CLIENT', '', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)	{
 			$status = array('status' => FALSE, 'pesan' => 'Gagal menyimpan Data, pastikan telah mengisi semua inputan.');
@@ -46,12 +46,12 @@ class Client extends CI_Controller {
 			$newId = $maxIDCustomer->MAX + 1;
 
 			$data = array(
-				'ID_USER' => $newId,
-				'USERNAME' => $this->input->post('USERNAME'),
-				'NAMA_USER' => $this->input->post('NAMA_USER'),
-				'ID_KATEGORI_USER' => $this->input->post('ID_KATEGORI_USER'),
-				'PASSWORD' => $this->input->post('PASSWORD')	,
-				'AKTIF' => $this->input->post('AKTIF')
+				'ID_CLIENT' => $newId,
+				'EMAIL_CLIENT' => $this->input->post('EMAIL_CLIENT'),
+				'PASSWORD' => $this->input->post('PASSWORD'),
+				'NAMA_CLIENT' => $this->input->post('NAMA_CLIENT'),
+				'TELP_CLIENT' => $this->input->post('TELP_CLIENT')	,
+				'STATUS' => $this->input->post('STATUS')
 			);
 
 			$query = $this->client_model->insert($data);
@@ -62,49 +62,36 @@ class Client extends CI_Controller {
 	}
 
 	public function edit($IdPrimaryKey){
-		$where ="id_USER = '".$IdPrimaryKey."' ";
+		$where ="ID_CLIENT = '".$IdPrimaryKey."' ";
 		$this->oldData = $this->client_model->getData($where);
 		if(!$this->oldData){
 			redirect($this->uri->segment(1));
 		}
-		$orderBy = " NAMA_KATEGORI_USER";
-		$this->dataKategoriUser = 	$this->kategori_client_model->showData("",$orderBy);
+		
 		$this->template_view->load_view('client/client_edit_view');
 	}
 	public function edit_data(){
-		$this->form_validation->set_rules('ID_USER', '', 'trim|required');
-		$this->form_validation->set_rules('NAMA_USER', '', 'trim|required');
+		$this->form_validation->set_rules('NAMA_CLIENT', '', 'trim|required');
 		$this->form_validation->set_rules('PASSWORD', '', 'trim|required');
-		$this->form_validation->set_rules('USERNAME', '', 'trim|required');
+		$this->form_validation->set_rules('EMAIL_CLIENT', '', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)	{
 			$status = array('status' => FALSE, 'pesan' => 'Gagal menyimpan Data, pastikan telah mengisi semua inputan.');
 		}
 		else{
 			$data = array(
-				'USERNAME' => $this->input->post('USERNAME'),
-				'ID_KATEGORI_USER' => $this->input->post('ID_KATEGORI_USER'),
-				'NAMA_USER' => $this->input->post('NAMA_USER')		,
-				'PASSWORD' => $this->input->post('PASSWORD')		,
-				'AKTIF' => $this->input->post('AKTIF')
+				'EMAIL_CLIENT' => $this->input->post('EMAIL_CLIENT'),
+				'PASSWORD' => $this->input->post('PASSWORD'),
+				'NAMA_CLIENT' => $this->input->post('NAMA_CLIENT'),
+				'TELP_CLIENT' => $this->input->post('TELP_CLIENT')	,
+				'STATUS' => $this->input->post('STATUS')
 			);
 
-			$query = $this->client_model->update("ID_USER = ".$this->input->post('ID_USER'),$data);
+			$query = $this->client_model->update("ID_CLIENT = ".$this->input->post('ID_CLIENT'),$data);
 			$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));
 		}
 
 		echo(json_encode($status));
-	}
-	public function delete($IdPrimaryKey){
-
-		$data = array(
-			'USERNAME' => '',
-			'ID_KATEGORI_USER' => '',
-			'PASSWORD' => ''
-		);
-		$query = $this->client_model->update("ID_USER = ".$IdPrimaryKey,$data);
-		redirect(base_url()."".$this->uri->segment(1));
-
 	}
 
 }

@@ -10,44 +10,40 @@
 				</div>
 				<div class="box-body">
 					<form class="form-horizontal" id="form_standar">
+					
 						<div class="form-group">
-							<label class="control-label col-sm-4" >Kode Barang :</label>
-							<div class="col-sm-2">
-								<input type="hidden" id="ID_BARANG"  value="<?php echo $this->oldData->ID_BARANG; ?>" maxlength="10" minlength="10" name="ID_BARANG">
-								<input type="input" class="form-control required" id="KODE_BARANG"  value="<?php echo $this->oldData->KODE_BARANG; ?>" maxlength="10" minlength="10" name="KODE_BARANG">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" >Nama Barang :</label>
-							<div class="col-sm-4">
-								<input type="input" class="form-control required  number" id="NAMA_BARANG"  value="<?php echo $this->oldData->NAMA_BARANG; ?>" name="NAMA_BARANG">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="email">Satuan Barang :</label>
-							<div class="col-sm-4">
-								<select class="form-control"  name="ID_SATUAN_BARANG">
-									<option value="">Silahkan Pilih</option>
-									<?php
-									foreach($this->dataSatuanBarang as $dataSatuanBarang){
-									?>
-									<option <?php if($this->oldData->ID_SATUAN_BARANG == $dataSatuanBarang->ID_SATUAN_BARANG) echo "selected"; ?> value="<?php echo $dataSatuanBarang->ID_SATUAN_BARANG ?>"><?php echo $dataSatuanBarang->NAMA_SATUAN_BARANG ?></option>
-									<?php
-									}
-									?>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" >Keterangan :</label>
+							<label class="control-label col-sm-4" >Nama Client :</label>
 							<div class="col-sm-6">
-								<textarea type="input" class="form-control required" id="KETERANGAN_BARANG" name="KETERANGAN_BARANG"><?php echo $this->oldData->KETERANGAN_BARANG; ?></textarea>
+							<input type="hidden" id="ID_CLIENT"  value="<?php echo $this->oldData->ID_CLIENT; ?>" name="ID_CLIENT">
+								<input type="input" class="form-control required" id="NAMA_CLIENT"  name="NAMA_CLIENT" value="<?php echo $this->oldData->NAMA_CLIENT; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" >Jumlah Stok Barang :</label>
-							<div class="col-sm-1">
-								<input type="input" class="form-control required" id="JUMLAH_STOK"   value="<?php echo $this->oldData->JUMLAH_STOK; ?>" name="JUMLAH_STOK" value="0">
+							<label class="control-label col-sm-4" >eMail Client :</label>
+							<div class="col-sm-4">
+								<input type="input" class="form-control required email" id="EMAIL_CLIENT" name="EMAIL_CLIENT" value="<?php echo $this->oldData->EMAIL_CLIENT; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" >Telp Client :</label>
+							<div class="col-sm-3">
+								<input type="input" class="form-control required number" id="TELP_CLIENT" name="TELP_CLIENT" value="<?php echo $this->oldData->TELP_CLIENT; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" >Password :</label>
+							<div class="col-sm-3">
+								<input type="input" class="form-control required" id="PASSWORD" name="PASSWORD" value="<?php echo $this->oldData->PASSWORD; ?>">
+							</div>
+						</div>
+						<?php //var_dump($this->dataSatuanBarang);?>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="email">Status Client :</label>
+							<div class="col-sm-2">
+								<select class="form-control"  name="STATUS">
+									<option value="1" <?php if( $this->oldData->STATUS=='1') echo "selected"; ?>>Aktif</option>
+									<option value="0" <?php if( $this->oldData->STATUS=='0') echo "selected"; ?>>Tidak Aktif</option>				
+								</select>
 							</div>
 						</div>
 						<div class="form-group">

@@ -20,8 +20,7 @@
 						<form method="get">
 						<div class="col-sm-4 col-md-offset-2">
 							<select class="form-control" name="field">
-								<option <?php if($this->input->get('field')=='NAMA_CLIENT') echo "selected"; ?> value="NAMA_CLIENT">Berdasarkan Nama Cilent</option>
-								<option <?php if($this->input->get('field')=='TELP_CLIENT') echo "selected"; ?> value="TELP_CLIENT">Berdasarkan Telp Cilent</option>
+								<option <?php if($this->input->get('field')=='NAMA_PROMO') echo "selected"; ?> value="NAMA_PROMO">Berdasarkan Nama Promo</option>
 							</select>
 						</div>
 						<div class="col-sm-6">
@@ -50,11 +49,10 @@
             <thead>
               <tr>
                 <th colspan="2" width="15%">No.</th>
-                <th>Nama Client</th>
-                <th>eMail</th>
-                <th>Telp </th>
-                <th>Status</th>
-                <th>Password</th>
+                <th>Nama Promo</th>
+                <th>Image</th>
+                <th>Mulai Tampil</th>
+                <th>Akhir Tampil</th>
               </tr>
             </thead>
             <tbody>
@@ -65,14 +63,13 @@
 				?>
 				<tr>
 					<td align="center">
-						<a href="<?=base_url();?><?=$this->uri->segment(1);?>/edit/<?php echo $showData->ID_CLIENT; ?>"><span class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></span></a>
+						<a href="<?=base_url();?><?=$this->uri->segment(1);?>/edit/<?php echo $showData->ID_PROMO; ?>"><span class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></span></a>
 					</td>
 					<td align="center"><?php echo $no; ?>.</td>
-					<td ><?php echo $showData->NAMA_CLIENT; ?></td>
-					<td ><?php echo $showData->EMAIL_CLIENT; ?></td>
-					<td ><?php echo $showData->TELP_CLIENT; ?></td>
-					<td ><?php if( $showData->STATUS == '1') echo "Aktif"; else echo "Tidak Aktif"; ?> </td>
-					<td><?php echo $showData->PASSWORD; ?></td>
+					<td ><?php echo $showData->NAMA_PROMO; ?></td>
+					<td ><?php echo $showData->IMAGE_PROMO; ?></td>
+					<td ><?php echo $showData->MULAI_AKTIF_INDO; ?></td>
+					<td ><?php echo $showData->AKHIR_AKTIF_INDO; ?></td>
 				</tr>
 				<?php
 				$no++;

@@ -11,37 +11,28 @@
 				<div class="box-body">
 					<form class="form-horizontal" id="form_standar">
 						<div class="form-group">
-							<label class="control-label col-sm-4" >Nama Client :</label>
+							<label class="control-label col-sm-4" >Nama Promo :</label>
+							<div class="col-sm-5">
+								<input type="input" class="form-control required" id="NAMA_PROMO"  name="NAMA_PROMO">
+							</div>
+						</div>
+					
+						<div class="form-group">
+							<label class="control-label col-sm-4" >Keterangan :</label>
 							<div class="col-sm-6">
-								<input type="input" class="form-control required" id="NAMA_CLIENT"  name="NAMA_CLIENT">
+								<textarea class="form-control required" id="KETERANGAN_PROMO"  name="KETERANGAN_PROMO"></textarea>
 							</div>
 						</div>
+						
 						<div class="form-group">
-							<label class="control-label col-sm-4" >eMail Client :</label>
-							<div class="col-sm-4">
-								<input type="input" class="form-control required email" id="EMAIL_CLIENT" name="EMAIL_CLIENT">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" >Telp Client :</label>
-							<div class="col-sm-3">
-								<input type="input" class="form-control required number" id="TELP_CLIENT" name="TELP_CLIENT">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" >Password :</label>
-							<div class="col-sm-3">
-								<input type="input" class="form-control required" id="PASSWORD" name="PASSWORD">
-							</div>
-						</div>
-						<?php //var_dump($this->dataSatuanBarang);?>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="email">Status Client :</label>
+							<label class="control-label col-sm-4" >Tampil :</label>
 							<div class="col-sm-2">
-								<select class="form-control"  name="STATUS">
-									<option value="1">Aktif</option>
-									<option value="0">Tidak Aktif</option>				
-								</select>
+								
+								<input class="form-control" name="MULAI_AKTIF" id="datepicker" value="" data-date-format='dd-mm-yyyy'> 
+						
+							</div>
+							<div class="col-sm-2">								
+								<input class="form-control" name="AKHIR_AKTIF" id="datepicker2" value="" data-date-format='dd-mm-yyyy'>			
 							</div>
 						</div>
 						

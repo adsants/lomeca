@@ -20,8 +20,8 @@
 						<form method="get">
 						<div class="col-sm-4 col-md-offset-2">
 							<select class="form-control" name="field">
-								<option <?php if($this->input->get('field')=='NAMA_CLIENT') echo "selected"; ?> value="NAMA_CLIENT">Berdasarkan Nama Cilent</option>
-								<option <?php if($this->input->get('field')=='TELP_CLIENT') echo "selected"; ?> value="TELP_CLIENT">Berdasarkan Telp Cilent</option>
+								<option <?php if($this->input->get('field')=='NAMA_VOUCHER') echo "selected"; ?> value="NAMA_VOUCHER">Berdasarkan Nama Voucher</option>
+								<option <?php if($this->input->get('field')=='KODE_VOUCHER') echo "selected"; ?> value="KODE_VOUCHER">Berdasarkan Kode Voucher</option>
 							</select>
 						</div>
 						<div class="col-sm-6">
@@ -50,11 +50,13 @@
             <thead>
               <tr>
                 <th colspan="2" width="15%">No.</th>
-                <th>Nama Client</th>
-                <th>eMail</th>
-                <th>Telp </th>
-                <th>Status</th>
-                <th>Password</th>
+                <th>Nama Vocuher</th>
+                <th>Kode</th>
+                <th>Keterangan </th>
+                <th>Mulai Tampil</th>
+                <th>Akhir Tampil</th>
+                <th>Mulai Berlaku</th>
+                <th>Akhir Berlaku</th>
               </tr>
             </thead>
             <tbody>
@@ -65,14 +67,16 @@
 				?>
 				<tr>
 					<td align="center">
-						<a href="<?=base_url();?><?=$this->uri->segment(1);?>/edit/<?php echo $showData->ID_CLIENT; ?>"><span class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></span></a>
+						<a href="<?=base_url();?><?=$this->uri->segment(1);?>/edit/<?php echo $showData->ID_VOUCHER; ?>"><span class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></span></a>
 					</td>
 					<td align="center"><?php echo $no; ?>.</td>
-					<td ><?php echo $showData->NAMA_CLIENT; ?></td>
-					<td ><?php echo $showData->EMAIL_CLIENT; ?></td>
-					<td ><?php echo $showData->TELP_CLIENT; ?></td>
-					<td ><?php if( $showData->STATUS == '1') echo "Aktif"; else echo "Tidak Aktif"; ?> </td>
-					<td><?php echo $showData->PASSWORD; ?></td>
+					<td ><?php echo $showData->NAMA_VOUCHER; ?></td>
+					<td ><?php echo $showData->KODE_VOUCHER; ?></td>
+					<td ><?php echo $showData->KETERANGAN_VOUCHER; ?></td>
+					<td ><?php echo $showData->MULAI_AKTIF_INDO; ?></td>
+					<td ><?php echo $showData->AKHIR_AKTIF_INDO; ?></td>
+					<td ><?php echo $showData->BERLAKU_MULAI_INDO; ?></td>
+					<td ><?php echo $showData->BERLAKU_AKHIR_INDO; ?></td>	
 				</tr>
 				<?php
 				$no++;
