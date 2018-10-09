@@ -223,6 +223,7 @@
 							<h1 class="animate-box"><?php echo $this->dataClient->NAMA_CLIENT;?> <br><br><sup>PromoApp</sup></h1>
 							<div class="fh5co-go animate-box">
 								<a href="#" class="js-fh5co-next">
+									<p style="font-size:17px;color:#fff;text-transform:capitalize;" class="animate-box"><?php echo $this->dataUser->NAMA_USER;?></p>
 									See Promo & Voucher Code
 									<span><i class="icon-arrow-down2"></i></span>
 								</a>
@@ -283,7 +284,7 @@
 						}
 
 						if(!$this->dataVoucher){
-							echo '<p class="fh5co-lead-judul animate-box">Nantikan Voucher selanjutnya :)</p>';
+							echo '<p class="fh5co-lead-judul animate-box text-center">Please look forward to the next Voucher <img src="'.base_url().'assets/img/smile.png" height="15px"></p>';
 						}
 					 	?>
 

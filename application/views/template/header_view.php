@@ -147,7 +147,7 @@ $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 			</a>
 		</li>
 		<?php
-		if($this->session->userdata('id_client') != '0'){
+		if($this->session->userdata('id_client') == '0'){
 		?>
 		<li class='<?php if($this->uri->segment(1)=='client') echo "active"; ?>'>
 			<a href='<?=base_url();?>client'>
@@ -164,7 +164,7 @@ $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 			<span>Voucher</span>
 			</a>
 		</li>
-		
+
 		<li class='<?php if($this->uri->segment(1)=='promo') echo "active"; ?>'>
 			<a href='<?=base_url();?>promo'>
 			<i class='fa fa-image'></i>

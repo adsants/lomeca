@@ -10,9 +10,14 @@
 			<hr>
 			<div class="row">
 				<div class="col-sm-2">
-				
+          <?php
+          if($this->session->userdata('id_client')!='0'){
+          ?>
           <a href="<?=base_url();?><?=$this->uri->segment(1);?>/add"><span class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</span></a>
-				</div>
+          <?php
+          }
+          ?>
+      	</div>
 				<div class="col-sm-2">
 				</div>
 				<div class="col-sm-8">
@@ -67,8 +72,14 @@
 				?>
 				<tr>
 					<td align="center">
+            <?php
+            if($this->session->userdata('id_client')!='0'){
+            ?>
 						<a href="<?=base_url();?><?=$this->uri->segment(1);?>/edit/<?php echo $showData->ID_VOUCHER; ?>"><span class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></span></a>
-					</td>
+            <?php
+            }
+            ?>
+          </td>
 					<td align="center"><?php echo $no; ?>.</td>
 					<td ><?php echo $showData->NAMA_VOUCHER; ?></td>
 					<td ><?php echo $showData->KODE_VOUCHER; ?></td>
@@ -76,7 +87,7 @@
 					<td ><?php echo $showData->MULAI_AKTIF_INDO; ?></td>
 					<td ><?php echo $showData->AKHIR_AKTIF_INDO; ?></td>
 					<td ><?php echo $showData->BERLAKU_MULAI_INDO; ?></td>
-					<td ><?php echo $showData->BERLAKU_AKHIR_INDO; ?></td>	
+					<td ><?php echo $showData->BERLAKU_AKHIR_INDO; ?></td>
 				</tr>
 				<?php
 				$no++;

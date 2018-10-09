@@ -24,10 +24,10 @@ class Voucher extends CI_Controller {
 		}
 
 		$config['base_url'] 	= base_url().''.$this->uri->segment(1).'/index'.$urlSearch;
-		$this->jumlahData 		= $this->voucher_model->getCount("",$like);
+		$this->jumlahData 		= $this->voucher_model->getCount($where,$like);
 		$config['total_rows'] 	= $this->jumlahData;
 		$config['per_page'] 	= 10;
-		$this->showData = $this->voucher_model->showData("",$like,$order_by,$config['per_page'],$this->input->get('per_page'));
+		$this->showData = $this->voucher_model->showData($where,$like,$order_by,$config['per_page'],$this->input->get('per_page'));
 		$this->pagination->initialize($config);
 		$this->template_view->load_view('voucher/voucher_view');
 	}

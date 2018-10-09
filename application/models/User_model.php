@@ -10,7 +10,6 @@ class User_model extends CI_Model {
 	function showData($where = null,$like = null,$order_by = null,$limit = null, $fromLimit=null){
 
 		$this->db->select("m_user.*");
-		$this->db->select("m_kategori_user.NAMA_KATEGORI_USER");
 		if($where){
 			$this->db->where($where);
 		}
@@ -20,7 +19,6 @@ class User_model extends CI_Model {
 		if($order_by){
 			$this->db->order_by($order_by);
 		}
-		$this->db->join('m_kategori_user', 'm_kategori_user.id_kategori_user = m_user.id_kategori_user');
 		return $this->db->get("m_user",$limit,$fromLimit)->result();
 	}
 
