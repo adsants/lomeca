@@ -47,16 +47,16 @@ class Voucher extends CI_Controller {
 
 			$mulaiAktif		=	explode('-',$this->input->post('MULAI_AKTIF'));
 			$mulaiAktif		=	$mulaiAktif[2]."-".$mulaiAktif[1]."-".$mulaiAktif[0];
-			
+
 			$akhirAktif		=	explode('-',$this->input->post('AKHIR_AKTIF'));
 			$akhirAktif		=	$akhirAktif[2]."-".$akhirAktif[1]."-".$akhirAktif[0];
-			
+
 			$berlakuMulai		=	explode('-',$this->input->post('BERLAKU_MULAI'));
 			$berlakuMulai		=	$berlakuMulai[2]."-".$berlakuMulai[1]."-".$berlakuMulai[0];
-			
+
 			$berlakuAkhir		=	explode('-',$this->input->post('BERLAKU_AKHIR'));
 			$berlakuAkhir		=	$berlakuAkhir[2]."-".$berlakuAkhir[1]."-".$berlakuAkhir[0];
-			
+
 			$data = array(
 				'ID_VOUCHER' 		=> $newId,
 				'ID_CLIENT' 		=> $this->session->userdata('id_client'),
@@ -82,7 +82,7 @@ class Voucher extends CI_Controller {
 		if(!$this->oldData){
 			redirect($this->uri->segment(1));
 		}
-		
+
 		$this->template_view->load_view('voucher/voucher_edit_view');
 	}
 	public function edit_data(){
@@ -95,18 +95,17 @@ class Voucher extends CI_Controller {
 		else{
 			$mulaiAktif		=	explode('-',$this->input->post('MULAI_AKTIF'));
 			$mulaiAktif		=	$mulaiAktif[2]."-".$mulaiAktif[1]."-".$mulaiAktif[0];
-			
+
 			$akhirAktif		=	explode('-',$this->input->post('AKHIR_AKTIF'));
 			$akhirAktif		=	$akhirAktif[2]."-".$akhirAktif[1]."-".$akhirAktif[0];
-			
+
 			$berlakuMulai		=	explode('-',$this->input->post('BERLAKU_MULAI'));
 			$berlakuMulai		=	$berlakuMulai[2]."-".$berlakuMulai[1]."-".$berlakuMulai[0];
-			
+
 			$berlakuAkhir		=	explode('-',$this->input->post('BERLAKU_AKHIR'));
 			$berlakuAkhir		=	$berlakuAkhir[2]."-".$berlakuAkhir[1]."-".$berlakuAkhir[0];
-			
+
 			$data = array(
-				'ID_CLIENT' 		=> $this->session->userdata('id_client'),
 				'NAMA_VOUCHER' 		=> $this->input->post('NAMA_VOUCHER'),
 				'KODE_VOUCHER' 		=> $this->input->post('KODE_VOUCHER'),
 				'KETERANGAN_VOUCHER' 	=> $this->input->post('KETERANGAN_VOUCHER')	,

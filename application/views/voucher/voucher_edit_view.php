@@ -36,20 +36,20 @@
 							<label class="control-label col-sm-4" >Tampil :</label>
 							<div class="col-sm-2">
 								
-								<input class="form-control" name="MULAI_AKTIF" id="datepicker" value="<?php echo $this->oldData->MULAI_AKTIF_INDO; ?>" data-date-format='dd-mm-yyyy'> 
+								<input class="form-control  required" name="MULAI_AKTIF" id="datepicker" value="<?php echo $this->oldData->MULAI_AKTIF_INDO; ?>" data-date-format='dd-mm-yyyy'> 
 						
 							</div>
 							<div class="col-sm-2">								
-								<input class="form-control" name="AKHIR_AKTIF" id="datepicker2" value="<?php echo $this->oldData->AKHIR_AKTIF_INDO; ?>" data-date-format='dd-mm-yyyy'>			
+								<input class="form-control  required" name="AKHIR_AKTIF" id="datepicker2" value="<?php echo $this->oldData->AKHIR_AKTIF_INDO; ?>" data-date-format='dd-mm-yyyy'>			
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" >Masa Berlaku :</label>
 							<div class="col-sm-2">								
-								<input class="form-control" name="BERLAKU_MULAI" id="datepicker3" value="<?php echo $this->oldData->BERLAKU_MULAI_INDO; ?>" data-date-format='dd-mm-yyyy'>	
+								<input class="form-control required" name="BERLAKU_MULAI" id="datepicker3" value="<?php echo $this->oldData->BERLAKU_MULAI_INDO; ?>" data-date-format='dd-mm-yyyy'>	
 							</div>
 							<div class="col-sm-2">								
-								<input class="form-control" name="BERLAKU_AKHIR" id="datepicker4" value="<?php echo $this->oldData->BERLAKU_AKHIR_INDO; ?>" data-date-format='dd-mm-yyyy'>	
+								<input class="form-control required" name="BERLAKU_AKHIR" id="datepicker4" value="<?php echo $this->oldData->BERLAKU_AKHIR_INDO; ?>" data-date-format='dd-mm-yyyy'>	
 							</div>
 						</div>
 						<div class="form-group">

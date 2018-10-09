@@ -35,89 +35,86 @@ class Promo extends CI_Controller {
 		$this->template_view->load_view('promo/promo_add_view');
 	}
 	public function add_data(){
-		$this->form_validation->set_rules('NAMA_VOUCHER', '', 'trim|required');
-		$this->form_validation->set_rules('KODE_VOUCHER', '', 'trim|required');
+		$this->form_validation->set_rules('NAMA_PROMO', '', 'trim|required');
+		$this->form_validation->set_rules('MULAI_AKTIF', '', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)	{
 			$status = array('status' => FALSE, 'pesan' => 'Gagal menyimpan Data, pastikan telah mengisi semua inputan.');
 		}
 		else{
-			$maxIDCustomer = $this->promo_model->getPrimaryKeyMax();
-			$newId = $maxIDCustomer->MAX + 1;
 
-			$mulaiAktif		=	explode('-',$this->input->post('MULAI_AKTIF'));
-			$mulaiAktif		=	$mulaiAktif[2]."-".$mulaiAktif[1]."-".$mulaiAktif[0];
-			
-			$akhirAktif		=	explode('-',$this->input->post('AKHIR_AKTIF'));
-			$akhirAktif		=	$akhirAktif[2]."-".$akhirAktif[1]."-".$akhirAktif[0];
-			
-			$berlakuMulai		=	explode('-',$this->input->post('BERLAKU_MULAI'));
-			$berlakuMulai		=	$berlakuMulai[2]."-".$berlakuMulai[1]."-".$berlakuMulai[0];
-			
-			$berlakuAkhir		=	explode('-',$this->input->post('BERLAKU_AKHIR'));
-			$berlakuAkhir		=	$berlakuAkhir[2]."-".$berlakuAkhir[1]."-".$berlakuAkhir[0];
-			
-			$data = array(
-				'ID_VOUCHER' 		=> $newId,
-				'ID_CLIENT' 		=> $this->session->userdata('id_client'),
-				'NAMA_VOUCHER' 		=> $this->input->post('NAMA_VOUCHER'),
-				'KODE_VOUCHER' 		=> $this->input->post('KODE_VOUCHER'),
-				'KETERANGAN_VOUCHER' 	=> $this->input->post('KETERANGAN_VOUCHER')	,
-				'MULAI_AKTIF' 		=>	$mulaiAktif,
-				'AKHIR_AKTIF' 		=>	$akhirAktif,
-				'BERLAKU_MULAI' 	=>	$berlakuMulai,
-				'BERLAKU_AKHIR' 	=>	$berlakuAkhir
-			);
+			if($this->input->post('IMAGE_PROMO') == ''){
+				$status = array('status' => FALSE, 'pesan' => 'Gagal menyimpan Data, silahkan Upload Image Promo terlebih dahulu.');
+			}
+			else{
 
-			$query = $this->promo_model->insert($data);
-			$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));
+				$maxIDCustomer = $this->promo_model->getPrimaryKeyMax();
+				$newId = $maxIDCustomer->MAX + 1;
+
+				$mulaiAktif		=	explode('-',$this->input->post('MULAI_AKTIF'));
+				$mulaiAktif		=	$mulaiAktif[2]."-".$mulaiAktif[1]."-".$mulaiAktif[0];
+
+				$akhirAktif		=	explode('-',$this->input->post('AKHIR_AKTIF'));
+				$akhirAktif		=	$akhirAktif[2]."-".$akhirAktif[1]."-".$akhirAktif[0];
+
+
+				$data = array(
+					'ID_PROMO' 		=> $newId,
+					'ID_CLIENT' 		=> $this->session->userdata('id_client'),
+					'NAMA_PROMO' 		=> $this->input->post('NAMA_PROMO'),
+					'KETERANGAN_PROMO' 	=> $this->input->post('KETERANGAN_PROMO'),
+					'IMAGE_PROMO' 		=> $this->input->post('IMAGE_PROMO')	,
+					'MULAI_AKTIF' 		=>	$mulaiAktif,
+					'AKHIR_AKTIF' 		=>	$akhirAktif
+				);
+
+				$query = $this->promo_model->insert($data);
+				$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));
+			}
 		}
 
 		echo(json_encode($status));
 	}
 
 	public function edit($IdPrimaryKey){
-		$where ="ID_VOUCHER = '".$IdPrimaryKey."' ";
+		$where ="ID_PROMO = '".$IdPrimaryKey."' ";
 		$this->oldData = $this->promo_model->getData($where);
 		if(!$this->oldData){
 			redirect($this->uri->segment(1));
 		}
-		
+
 		$this->template_view->load_view('promo/promo_edit_view');
 	}
 	public function edit_data(){
-		$this->form_validation->set_rules('NAMA_VOUCHER', '', 'trim|required');
-		$this->form_validation->set_rules('KODE_VOUCHER', '', 'trim|required');
+		$this->form_validation->set_rules('NAMA_PROMO', '', 'trim|required');
+		$this->form_validation->set_rules('MULAI_AKTIF', '', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)	{
 			$status = array('status' => FALSE, 'pesan' => 'Gagal menyimpan Data, pastikan telah mengisi semua inputan.');
 		}
 		else{
-			$mulaiAktif		=	explode('-',$this->input->post('MULAI_AKTIF'));
-			$mulaiAktif		=	$mulaiAktif[2]."-".$mulaiAktif[1]."-".$mulaiAktif[0];
-			
-			$akhirAktif		=	explode('-',$this->input->post('AKHIR_AKTIF'));
-			$akhirAktif		=	$akhirAktif[2]."-".$akhirAktif[1]."-".$akhirAktif[0];
-			
-			$berlakuMulai		=	explode('-',$this->input->post('BERLAKU_MULAI'));
-			$berlakuMulai		=	$berlakuMulai[2]."-".$berlakuMulai[1]."-".$berlakuMulai[0];
-			
-			$berlakuAkhir		=	explode('-',$this->input->post('BERLAKU_AKHIR'));
-			$berlakuAkhir		=	$berlakuAkhir[2]."-".$berlakuAkhir[1]."-".$berlakuAkhir[0];
-			
-			$data = array(
-				'ID_CLIENT' 		=> $this->session->userdata('id_client'),
-				'NAMA_VOUCHER' 		=> $this->input->post('NAMA_VOUCHER'),
-				'KODE_VOUCHER' 		=> $this->input->post('KODE_VOUCHER'),
-				'KETERANGAN_VOUCHER' 	=> $this->input->post('KETERANGAN_VOUCHER')	,
-				'MULAI_AKTIF' 		=>	$mulaiAktif,
-				'AKHIR_AKTIF' 		=>	$akhirAktif,
-				'BERLAKU_MULAI' 	=>	$berlakuMulai,
-				'BERLAKU_AKHIR' 	=>	$berlakuAkhir
-			);
+			if($this->input->post('IMAGE_PROMO') == ''){
+				$status = array('status' => FALSE, 'pesan' => 'Gagal menyimpan Data, silahkan Upload Image Promo terlebih dahulu.');
+			}
+			else{
 
-			$query = $this->promo_model->update("ID_VOUCHER = ".$this->input->post('ID_VOUCHER'),$data);
-			$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));
+				$mulaiAktif		=	explode('-',$this->input->post('MULAI_AKTIF'));
+				$mulaiAktif		=	$mulaiAktif[2]."-".$mulaiAktif[1]."-".$mulaiAktif[0];
+
+				$akhirAktif		=	explode('-',$this->input->post('AKHIR_AKTIF'));
+				$akhirAktif		=	$akhirAktif[2]."-".$akhirAktif[1]."-".$akhirAktif[0];
+
+				$data = array(
+					'NAMA_PROMO' 		=> $this->input->post('NAMA_PROMO'),
+					'KETERANGAN_PROMO' 	=> $this->input->post('KETERANGAN_PROMO'),
+					'IMAGE_PROMO' 		=> $this->input->post('IMAGE_PROMO')	,
+					'MULAI_AKTIF' 		=>	$mulaiAktif,
+					'AKHIR_AKTIF' 		=>	$akhirAktif
+				);
+
+				$query = $this->promo_model->update("ID_PROMO = ".$this->input->post('ID_PROMO'),$data);
+				$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));
+			}
 		}
 
 		echo(json_encode($status));

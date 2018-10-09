@@ -181,3 +181,32 @@ $('#form_upload').ajaxForm({
 		alert("error .. return bukan Json");
 	}
 });
+
+
+$('#form_upload_promo').ajaxForm({
+	url: base_url+'save_upload/promo/',
+	type: 'post',
+	dataType: 'json',
+	resetForm: false,
+	beforeSubmit: function() {
+		$('#loading_upload').html('Proses Upload ...');
+	},
+	success: function(data) {
+		if(data.status){
+			$('#IMAGE_PROMO').val(data.nama_file);
+			$('#loading_upload').html('Image berhasil diupload.');			
+			$('#DIV_IMAGE_PROMO').slideDown('slow');
+			$('#image_').attr('src',base_url + "uploads/promo/"+data.nama_file);
+		}
+		else{
+			$('#loading_upload').html('<label for="tgl_surat" class="error">Image gagal diupload, pastikan format File adalah jpg,png,jpeg,gif dan Maksimal adalah 1 Mb</label>');
+			$('#IMAGE_PROMO').val('');
+			$('#DIV_IMAGE_PROMO').hide('');
+		}
+	},
+	error : function(data) {
+		alert("error .. return bukan Json");
+		$('#loading_upload').html('');
+		$('#file_lampiran').val('');
+	}
+});

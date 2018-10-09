@@ -67,7 +67,7 @@
 					</td>
 					<td align="center"><?php echo $no; ?>.</td>
 					<td ><?php echo $showData->NAMA_PROMO; ?></td>
-					<td ><?php echo $showData->IMAGE_PROMO; ?></td>
+					<td ><img src="<?=base_url();?>uploads/promo/<?php echo $showData->IMAGE_PROMO ?>" id="image_"  width="300px"></td>
 					<td ><?php echo $showData->MULAI_AKTIF_INDO; ?></td>
 					<td ><?php echo $showData->AKHIR_AKTIF_INDO; ?></td>
 				</tr>
