@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Okt 2018 pada 11.02
+-- Generation Time: 09 Okt 2018 pada 05.00
 -- Versi Server: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -53,6 +53,14 @@ CREATE TABLE `m_client` (
   `PASSWORD` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `m_client`
+--
+
+INSERT INTO `m_client` (`ID_CLIENT`, `NAMA_CLIENT`, `EMAIL_CLIENT`, `TELP_CLIENT`, `STATUS`, `PASSWORD`) VALUES
+(1, 'StarBuck', 'info@starcbuck.com', '123123123', 0, '123456'),
+(2, 'mc d22', 'mc@gmail.com22', '32142342422', 1, '12322');
+
 -- --------------------------------------------------------
 
 --
@@ -94,10 +102,9 @@ CREATE TABLE `promo` (
   `ID_PROMO` int(10) NOT NULL,
   `ID_CLIENT` int(10) DEFAULT NULL,
   `NAMA_PROMO` varchar(255) DEFAULT NULL,
-  `MULAI_PROMO` date DEFAULT NULL,
-  `AKHIR_PROMO` date DEFAULT NULL,
+  `KETERANGAN_PROMO` text NOT NULL,
+  `IMAGE_PROMO` varchar(225) NOT NULL,
   `TGL_CREATE` timestamp NULL DEFAULT NULL,
-  `KODE_PROMO` varchar(100) DEFAULT NULL,
   `MULAI_AKTIF` date DEFAULT NULL,
   `AKHIR_AKTIF` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -105,17 +112,30 @@ CREATE TABLE `promo` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `text_promo`
+-- Struktur dari tabel `voucher`
 --
 
-CREATE TABLE `text_promo` (
-  `ID_BANNER` int(10) NOT NULL,
+CREATE TABLE `voucher` (
+  `ID_VOUCHER` int(10) NOT NULL,
   `ID_CLIENT` int(10) DEFAULT NULL,
-  `TEXT_PROMO` varchar(100) DEFAULT NULL,
+  `NAMA_VOUCHER` varchar(100) DEFAULT NULL,
+  `KODE_VOUCHER` varchar(50) NOT NULL,
+  `KETERANGAN_VOUCHER` text NOT NULL,
   `MULAI_AKTIF` date DEFAULT NULL,
   `AKHIR_AKTIF` date DEFAULT NULL,
+  `BERLAKU_MULAI` date NOT NULL,
+  `BERLAKU_AKHIR` date NOT NULL,
   `TGL_CREATE` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `voucher`
+--
+
+INSERT INTO `voucher` (`ID_VOUCHER`, `ID_CLIENT`, `NAMA_VOUCHER`, `KODE_VOUCHER`, `KETERANGAN_VOUCHER`, `MULAI_AKTIF`, `AKHIR_AKTIF`, `BERLAKU_MULAI`, `BERLAKU_AKHIR`, `TGL_CREATE`) VALUES
+(1, 0, 'pertama', '123DGH45', 'Keterangan', '2018-10-01', '2018-10-01', '2018-10-26', '2018-10-26', NULL),
+(2, 0, 'aa', 'aa', 'aa', '2018-10-01', '2018-10-01', '2018-10-25', '2018-10-27', NULL),
+(3, 0, 'bb', 'bbbb', 'bb', '2018-10-18', '2018-10-20', '2018-10-24', '2018-10-27', NULL);
 
 --
 -- Indexes for dumped tables
@@ -152,10 +172,10 @@ ALTER TABLE `promo`
   ADD PRIMARY KEY (`ID_PROMO`);
 
 --
--- Indexes for table `text_promo`
+-- Indexes for table `voucher`
 --
-ALTER TABLE `text_promo`
-  ADD PRIMARY KEY (`ID_BANNER`);
+ALTER TABLE `voucher`
+  ADD PRIMARY KEY (`ID_VOUCHER`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -171,7 +191,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `m_client`
 --
 ALTER TABLE `m_client`
-  MODIFY `ID_CLIENT` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CLIENT` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `m_lokasi_client`
@@ -192,10 +212,10 @@ ALTER TABLE `promo`
   MODIFY `ID_PROMO` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `text_promo`
+-- AUTO_INCREMENT for table `voucher`
 --
-ALTER TABLE `text_promo`
-  MODIFY `ID_BANNER` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `voucher`
+  MODIFY `ID_VOUCHER` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
