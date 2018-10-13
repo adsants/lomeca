@@ -27,13 +27,17 @@ class Mobile extends CI_Controller {
 			redirect("mobile/register?id_client=".$this->input->get('id_client')."&id_phone=".$this->input->get('id_phone'));
 		}
 
+		if($this->dataUser->STATUS =='0'){
+			redirect("mobile/activation?id_client=".$this->input->get('id_client')."&id_phone=".$this->input->get('id_phone'));
+		}
+
 
 		$promo						=	$this->db->query("select * from promo where id_client='".$this->input->get('id_client')."' and MULAI_AKTIF <= '".date('Y-m-d')."' and AKHIR_AKTIF >= '".date('Y-m-d')."'");
 		$this->dataPromo 	= $promo->result();
 	//	echo $this->db->last_query();
 
-	$voucher						=	$this->db->query("select *,date_format(BERLAKU_MULAI,'%d-%m-%Y') as BERLAKU_MULAI_INDO,date_format(BERLAKU_AKHIR,'%d-%m-%Y') as BERLAKU_AKHIR_INDO from voucher where id_client='".$this->input->get('id_client')."' and MULAI_AKTIF <= '".date('Y-m-d')."' and AKHIR_AKTIF >= '".date('Y-m-d')."'");
-	$this->dataVoucher 	= $voucher->result();
+		$voucher						=	$this->db->query("select *,date_format(BERLAKU_MULAI,'%d-%m-%Y') as BERLAKU_MULAI_INDO,date_format(BERLAKU_AKHIR,'%d-%m-%Y') as BERLAKU_AKHIR_INDO from voucher where id_client='".$this->input->get('id_client')."' and MULAI_AKTIF <= '".date('Y-m-d')."' and AKHIR_AKTIF >= '".date('Y-m-d')."'");
+		$this->dataVoucher 	= $voucher->result();
 
 		$this->load->view('mobile/home_view');
 	}
@@ -71,6 +75,40 @@ class Mobile extends CI_Controller {
 		}
 
 		$this->load->view('mobile/activation_view');
+	}
+
+	public function activation_data(){
+		$this->form_validation->set_rules('ID_USER', '', 'trim|required');
+		$this->form_validation->set_rules('PASSWORD', '', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE)	{
+			$status = array('status' => FALSE, 'pesan' => 'Failed to save data, please check your input.');
+		}
+		else{
+
+
+
+				$whereUser				=	"id_user='".$this->input->post('ID_USER')."' and password='".$this->input->post('PASSWORD')."'";
+				$this->dataUser 	= $this->user_model->getData($whereUser);
+
+				if(!$this->dataUser){
+					$status = array('status' => false , 'pesan' => "Sorry, your Code is wrong.");
+				}
+				else{
+
+					$data = array(
+						'STATUS' 					=> '1'
+					);
+
+					$query = $this->user_model->update("id_user = '".$this->input->post('ID_USER')."'",$data);
+
+					//echo $this->db->last_query();
+					$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));
+				}
+		}
+
+		echo(json_encode($status));
+
 	}
 
 	public function register_data(){
@@ -113,6 +151,27 @@ class Mobile extends CI_Controller {
 						'PASSWORD' 				=> $shuffled,
 						'STATUS' 					=> '0'
 					);
+
+				$this->load->library('email');
+				$config['protocol']  = 'smtp';
+				$config['smtp_host'] = 'ssl://bandungpoint.com';
+				$config['smtp_port'] = '465';
+				$config['smtp_user'] = 'promo@bandungpoint.com';
+				$config['smtp_pass'] = 's+hf)@umH-QL';
+
+				$config['mailpath'] = '/usr/sbin/sendmail';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype']  = 'html';
+				$config['charset']   = 'utf-8';
+				$config['newline']   = "\r\n";
+				$this->email->initialize($config);
+
+
+				$this->email->from('promo@bandungpoint.com','admin');
+				$this->email->to($this->input->post('EMAIL_USER'));
+				$this->email->subject('PromoApp Activation Code');
+				$this->email->message('Welcome to PromoApp.<br>Thanks for your Registration , Activation Code <br><h4>'.$shuffled.'</h4>');
+				$this->email->send();
 
 					$query = $this->user_model->insert($data);
 					$status = array('status' => true , 'redirect_link' => base_url()."".$this->uri->segment(1));

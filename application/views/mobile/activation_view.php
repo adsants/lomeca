@@ -97,8 +97,8 @@
 							<h1 class="animate-box"><?php echo $this->dataClient->NAMA_CLIENT;?> <br><br><sup>PromoApp</sup></h1>
 							<div class="fh5co-go animate-box">
 								<a href="#" class="js-fh5co-next">
-									<?php echo $this->dataUser->EMAIL_USER;?> ,<br>
-									Please Check your eMail for Activation
+									<b style='text-transform:lowercase;'><?php echo $this->dataUser->EMAIL_USER;?></b><br>
+									Check your eMail for Code Activation
 									<span><i class="icon-mail"></i></span>
 								</a>
 
@@ -107,14 +107,39 @@
 					</div>
 				</div>
 			  	<ul class="slides">
-			   	<li style="background-image: url(<?=base_url();?>assets/fotografy/images/starbucks_20170809_111130.jpg);" data-stellar-background-ratio="0.5"></li>
+			   	<li style="background-image: url(<?=base_url();?>uploads/profil/<?php echo $this->dataClient->IMAGE_CLIENT ?>);" data-stellar-background-ratio="0.5"></li>
 			  	</ul>
 
 			</div>
 		</div>
 		</div>
 
+		<div id="fh5co-portfolio" data-section="portfolio">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12  section-heading">
+						<h2 class="fh5co-section-title animate-box text-center">Activation Code</h2>
+						<hr>
+						<form action="" id="form_standar">
 
+							<div class="form-group">
+								<label for="email">Code :</label>
+								<input type="input" autocomplete="off" class="form-control required" id="PASSWORD" placeholder="Enter Code" name="PASSWORD">
+								<input type="hidden" class="form-control required number" id="ID_USER" placeholder="Enter Code" name="ID_USER" value="<?php echo $this->dataUser->ID_USER; ?>">
+							</div>
+
+							<div class="form-group">
+								<span id="pesan_error"></span>
+							</div>
+
+							<button type="submit" id="btn_submit" class="btn btn-lg">Submit</button>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
 		<div id="fh5co-about" data-section="about">
 			<div class="container">
 				<div class="row r-pb">

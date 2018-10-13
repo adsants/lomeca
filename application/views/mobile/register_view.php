@@ -106,7 +106,7 @@
 					</div>
 				</div>
 			  	<ul class="slides">
-			   	<li style="background-image: url(<?=base_url();?>assets/fotografy/images/starbucks_20170809_111130.jpg);" data-stellar-background-ratio="0.5"></li>
+			   	<li style="background-image: url(<?=base_url();?>uploads/profil/<?php echo $this->dataClient->IMAGE_CLIENT ?>);" data-stellar-background-ratio="0.5"></li>
 			  	</ul>
 
 			</div>
@@ -122,21 +122,21 @@
 						<form action="" id="form_standar">
 							<div class="form-group">
 					      <label for="email">Name :</label>
-					      <input type="input" class="form-control required" id="NAMA_USER" placeholder="Enter Name" name="NAMA_USER">
+					      <input type="input" class="form-control required" autocomplete="off" id="NAMA_USER" placeholder="Enter Name" name="NAMA_USER">
 					      <input type="hidden" class="form-control required" value="<?php echo $this->input->get('id_phone');?>" name="ID_PHONE">
 					      <input type="hidden" class="form-control required" value="<?php echo $this->input->get('id_client');?>" name="ID_CLIENT">
 					    </div>
 							<div class="form-group">
 					      <label for="email">Phone :</label>
-					      <input type="input" class="form-control required number" id="TELP_USER" placeholder="Enter Phone" name="TELP_USER">
+					      <input type="input" class="form-control required number" autocomplete="off" id="TLP_USER" placeholder="Enter Phone" name="TLP_USER">
 					    </div>
 							<div class="form-group">
 								<label for="email">eMail :</label>
-								<input type="input" class="form-control required email" id="EMAIL_USER" placeholder="Enter eMail" name="EMAIL_USER">
+								<input type="input" class="form-control required email" autocomplete="off" id="EMAIL_USER" placeholder="Enter eMail" name="EMAIL_USER">
 							</div>
 							<div class="form-group">
 								<label for="email">Address :</label>
-								<input type="input" class="form-control required" id="ALAMAT_USER" placeholder="Enter Address" name="ALAMAT_USER">
+								<input type="input" class="form-control required" autocomplete="off" id="ALAMAT_USER" placeholder="Enter Address" name="ALAMAT_USER">
 							</div>
 							<div class="form-group">
 								<label for="email">Gender :</label>

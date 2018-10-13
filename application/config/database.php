@@ -73,6 +73,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+	//'hostname' => 'localhost',
+//	'username' => 'bandungp_user',
+	//'password' => '',
+	//'password' => 'bandungp_password',
+//	'database' => 'bandungp_lomeca',
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',

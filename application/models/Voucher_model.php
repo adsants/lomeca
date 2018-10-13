@@ -10,6 +10,7 @@ class Voucher_model extends CI_Model {
 	function showData($where = null,$like = null,$order_by = null,$limit = null, $fromLimit=null){
 
 		$this->db->select("voucher.*");
+		$this->db->select("m_client.NAMA_CLIENT");
 		$this->db->select("date_format(MULAI_AKTIF,'%d-%m-%Y') as MULAI_AKTIF_INDO");
 		$this->db->select("date_format(AKHIR_AKTIF,'%d-%m-%Y') as AKHIR_AKTIF_INDO");
 		$this->db->select("date_format(BERLAKU_MULAI,'%d-%m-%Y') as BERLAKU_MULAI_INDO");
@@ -23,6 +24,7 @@ class Voucher_model extends CI_Model {
 		if($order_by){
 			$this->db->order_by($order_by);
 		}
+		$this->db->join('m_client','voucher.ID_CLIENT=m_client.ID_CLIENT','left');
 		return $this->db->get("voucher",$limit,$fromLimit)->result();
 	}
 
@@ -44,7 +46,7 @@ class Voucher_model extends CI_Model {
 		$this->db->select("date_format(AKHIR_AKTIF,'%d-%m-%Y') as AKHIR_AKTIF_INDO");
 		$this->db->select("date_format(BERLAKU_MULAI,'%d-%m-%Y') as BERLAKU_MULAI_INDO");
 		$this->db->select("date_format(BERLAKU_AKHIR,'%d-%m-%Y') as BERLAKU_AKHIR_INDO");
-		
+
 		$this->db->where($where);
 		return $this->db->get("voucher")->row();
 	}

@@ -54,6 +54,13 @@
             <thead>
               <tr>
                 <th colspan="2" width="15%">No.</th>
+                <?php
+                if($this->session->userdata('id_client') == '0'){
+                ?>
+                <th>Nama Client</th>
+                <?php
+                }
+                ?>
                 <th>Nama Promo</th>
                 <th>Image</th>
                 <th>Mulai Tampil</th>
@@ -73,10 +80,17 @@
             ?>
 						<a href="<?=base_url();?><?=$this->uri->segment(1);?>/edit/<?php echo $showData->ID_PROMO; ?>"><span class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></span></a>
             <?php
-            }            
+            }
             ?>
         	</td>
 					<td align="center"><?php echo $no; ?>.</td>
+          <?php
+          if($this->session->userdata('id_client') == '0'){
+          ?>
+					<td ><?php echo $showData->NAMA_CLIENT; ?></td>
+          <?php
+          }
+          ?>
 					<td ><?php echo $showData->NAMA_PROMO; ?></td>
 					<td ><img src="<?=base_url();?>uploads/promo/<?php echo $showData->IMAGE_PROMO ?>" id="image_"  width="300px"></td>
 					<td ><?php echo $showData->MULAI_AKTIF_INDO; ?></td>

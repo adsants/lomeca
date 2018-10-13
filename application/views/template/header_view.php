@@ -158,6 +158,12 @@ $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 		<?php
 		}
 		?>
+		<li class='<?php if($this->uri->segment(1)=='profil') echo "active"; ?>'>
+			<a href='<?=base_url();?>profil'>
+			<i class='fa fa-home'></i>
+			<span>Profil</span>
+			</a>
+		</li>
 		<li class='<?php if($this->uri->segment(1)=='voucher') echo "active"; ?>'>
 			<a href='<?=base_url();?>voucher'>
 			<i class='fa fa-dollar'></i>

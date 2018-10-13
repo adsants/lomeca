@@ -55,6 +55,13 @@
             <thead>
               <tr>
                 <th colspan="2" width="15%">No.</th>
+                <?php
+                if($this->session->userdata('id_client') == '0'){
+                ?>
+                <th>Nama Client</th>
+                <?php
+                }
+                ?>
                 <th>Nama Vocuher</th>
                 <th>Kode</th>
                 <th>Keterangan </th>
@@ -81,6 +88,13 @@
             ?>
           </td>
 					<td align="center"><?php echo $no; ?>.</td>
+          <?php
+          if($this->session->userdata('id_client') == '0'){
+          ?>
+          <td ><?php echo $showData->NAMA_CLIENT; ?></td>
+          <?php
+          }
+          ?>
 					<td ><?php echo $showData->NAMA_VOUCHER; ?></td>
 					<td ><?php echo $showData->KODE_VOUCHER; ?></td>
 					<td ><?php echo $showData->KETERANGAN_VOUCHER; ?></td>

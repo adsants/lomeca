@@ -233,7 +233,7 @@
 					</div>
 				</div>
 			  	<ul class="slides">
-			   	<li style="background-image: url(<?=base_url();?>assets/fotografy/images/starbucks_20170809_111130.jpg);" data-stellar-background-ratio="0.5"></li>
+			   		<li style="background-image: url(<?=base_url();?>uploads/profil/<?php echo $this->dataClient->IMAGE_CLIENT ?>);" data-stellar-background-ratio="0.5"></li>
 			  	</ul>
 
 			</div>
@@ -247,13 +247,14 @@
 
 					<?php
 					//var_dump($this->dataPromo);
+					$i=1;
 					foreach ($this->dataPromo  as $dataPromo) {
 
 					?>
 					<div class="col-md-12 col-sm-12 col-xs-12 col-xxs-12 animate-box">
 						<div class="img-grid">
 							<img src="<?=base_url();?>uploads/promo/<?php echo $dataPromo->IMAGE_PROMO;?>"  class="img-responsive" width="100%">
-							<a onclick="openModal();currentSlide(1)" class="">
+							<a onclick="openModal();currentSlide(<?php echo $i; ?>)" class="">
 								<div>
 									<span class="fh5co-meta"><?php echo $dataPromo->NAMA_PROMO;?></span>
 								</div>
@@ -261,6 +262,7 @@
 						</div>
 					</div>
 					<?php
+					$i++;
 					}
 				 	?>
 				</div>

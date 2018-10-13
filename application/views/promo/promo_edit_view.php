@@ -36,12 +36,12 @@
 						<div class="col-sm-6">
 
 						<div class="form-group">
-							<label class="control-label col-sm-3" >Waktu Tampil :</label>
-							<div class="col-sm-4">
+							<label class="control-label col-sm-4" >Waktu Akhir Tampil :</label>
+						<!--	<div class="col-sm-4">
 
 								<input class="form-control required" name="MULAI_AKTIF" id="datepicker"  value="<?php echo $this->oldData->MULAI_AKTIF_INDO; ?>" data-date-format='dd-mm-yyyy'>
 
-							</div>
+							</div>-->
 							<div class="col-sm-4">
 								<input class="form-control required" name="AKHIR_AKTIF" id="datepicker2"  value="<?php echo $this->oldData->AKHIR_AKTIF_INDO; ?>" data-date-format='dd-mm-yyyy'>
 							</div>
@@ -51,13 +51,13 @@
 
 
 						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-10">
+							<div class="col-sm-offset-4 col-sm-8">
 								<img src="<?php echo base_url();?>assets/img/loading.gif" id="loading" style="display:none">
 								<p id="pesan_error" style="display:none" class="text-warning" style="display:none"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-10">
+							<div class="col-sm-offset-4 col-sm-8">
 								<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
 								<a href="<?=base_url()."".$this->uri->segment(1);?>">
 									<span class="btn btn-warning"><i class="fa fa-remove"></i> Batal</span>
